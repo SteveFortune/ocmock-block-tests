@@ -23,7 +23,7 @@
 
 ### Test Cases
 
-- [`- (void)transitionFromViewController:toViewController:duration:options:animations:completion:`](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIViewController_Class/#//apple_ref/occ/instm/UIViewController/transitionFromViewController:toViewController:duration:options:animations:completion:)
+- [`UIViewController` transition methods](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIViewController_Class/#//apple_ref/occ/instm/UIViewController/transitionFromViewController:toViewController:duration:options:animations:completion:)
 - [`UIView` animation methods](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIView_Class/)
-- [`- (void)setCompletionBlockWithSuccess:(void(^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void(^)(AFHTTPRequestOperation *operation, NSError *error))failure` in AFNetworking](http://cocoadocs.org/docsets/AFNetworking/2.5.2/Classes/AFHTTPRequestOperation.html#//api/name/setCompletionBlockWithSuccess:failure:)
+- [`AFNetworking`](http://cocoadocs.org/docsets/AFNetworking/2.5.2/Classes/AFHTTPRequestOperation.html#//api/name/setCompletionBlockWithSuccess:failure:)
 - [`NSArray` enumeration methods](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSArray_Class/#//apple_ref/occ/instm/NSArray/enumerateObjectsUsingBlock:)
