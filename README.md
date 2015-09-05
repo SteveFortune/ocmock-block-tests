@@ -25,5 +25,5 @@
 
 - [`UIViewController` transition methods](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIViewController_Class/#//apple_ref/occ/instm/UIViewController/transitionFromViewController:toViewController:duration:options:animations:completion:)
 - [`UIView` animation methods](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIView_Class/)
-- [`AFNetworking`](http://cocoadocs.org/docsets/AFNetworking/2.5.2/Classes/AFHTTPRequestOperation.html#//api/name/setCompletionBlockWithSuccess:failure:)
+- [`RestKit`](https://github.com/RestKit/RestKit/blob/c567522fc6a8cb70770228fa35410e138a75f7e1/Code/Network/RKObjectManager.h#L690-L694)
 - [`NSArray` enumeration methods](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSArray_Class/#//apple_ref/occ/instm/NSArray/enumerateObjectsUsingBlock:)
