@@ -20,13 +20,6 @@ typedef BOOL (^OCMBlockTypedef)(NSString *);
 
 @interface OCMStrangeTypes : NSObject
 
-- (void)doLotsOfParams:(void (^)(NSString *, NSString *, long, NSInteger, double, NSNumber *, NSIndexPath *))longBlock;
-- (void)doReturnValue:(NSString *(^)())returnBlock;
-- (void)doInnerBlock:(void(^)(BOOL(^)(NSString *blockArg), OCMBlockTypedef))blockWithBlock;
-- (void)doTypedef:(void(^)(OCMTypedefObj, OCMTypedefObj *))typedefBlock;
-- (void)doStructs:(void(^)(struct OCMStruct, OCMStructTypedef, struct OCMStruct *, OCMStructTypedef *))structBlock;
-- (void)doVoidPtr:(void(^)(void *))voidPtrBlock;
-
 @end
 
 @implementation OCMStrangeTypes
