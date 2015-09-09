@@ -10,7 +10,7 @@
 #import <OCMock/OCMock.h>
 
 struct OCMStruct {
-    BOOL prop1;
+    NSUInteger prop1;
     NSUInteger prop2;
 };
 
@@ -20,7 +20,7 @@ typedef BOOL (^OCMBlockTypedef)(NSString *);
 
 @interface OCMStrangeTypes : NSObject
 
-- (void)doLotsOfParams:(void (^)(NSString *, NSString *, long, NSUInteger, double, NSNumber *, NSIndexPath *))longBlock;
+- (void)doLotsOfParams:(void (^)(NSString *, NSString *, long, NSInteger, double, NSNumber *, NSIndexPath *))longBlock;
 - (void)doReturnValue:(NSString *(^)())returnBlock;
 - (void)doInnerBlock:(void(^)(BOOL(^)(NSString *blockArg), OCMBlockTypedef))blockWithBlock;
 - (void)doTypedef:(void(^)(OCMTypedefObj, OCMTypedefObj *))typedefBlock;
@@ -31,7 +31,7 @@ typedef BOOL (^OCMBlockTypedef)(NSString *);
 
 @implementation OCMStrangeTypes
 
-- (void)doLotsOfParams:(void (^)(NSString *, NSString *, long, NSUInteger, double, NSNumber *, NSIndexPath *))longBlock {}
+- (void)doLotsOfParams:(void (^)(NSString *, NSString *, long, NSInteger, double, NSNumber *, NSIndexPath *))longBlock {}
 - (void)doReturnValue:(NSString *(^)())returnBlock {}
 - (void)doInnerBlock:(void(^)(BOOL(^)(NSString *), OCMBlockTypedef))blockWithBlock {}
 - (void)doTypedef:(void(^)(OCMTypedefObj, OCMTypedefObj *))typedefBlock {}
@@ -59,11 +59,13 @@ typedef BOOL (^OCMBlockTypedef)(NSString *);
 
 - (void)testInvokingBlockWithManyVaryingParams {
 
-    OCMStub([mock doLotsOfParams:([OCMArg invokeBlockWithArgs:@"One", @"Two", OCMOCK_VALUE(3l), OCMOCK_VALUE(4ul), OCMOCK_VALUE(5.23), @6, [NSIndexPath indexPathWithIndex:7], nil])]);
+    OCMStub([mock doLotsOfParams:([OCMArg invokeBlockWithArgs:@"One", @"Two", @3l, @4l, @5.23, @6, [NSIndexPath indexPathWithIndex:7], nil])]);
     __block BOOL invoked = NO;
 
-    [mock doLotsOfParams:^(NSString *one, NSString *two, long three, NSUInteger four, double five, NSNumber *six, NSIndexPath *seven) {
+    [mock doLotsOfParams:^(NSString *one, NSString *two, long three, NSInteger four, double five, NSNumber *six, NSIndexPath *seven) {
+        
         invoked = YES;
+        
         XCTAssertEqualObjects(one, @"One");
         XCTAssertEqualObjects(two, @"Two");
         XCTAssertEqual(three, 3);
