@@ -1,0 +1,9 @@
+target '17. Async Networking Collections' do
+  	pod "BetweenKit", "~> 2.0.0”  
+	pod "AFNetworking"
+end
+
+target '17. Async Networking CollectionsTests' do
+	pod 'OCMock', :git => 'https://github.com/SteveFortune/ocmock.git'
+end
+

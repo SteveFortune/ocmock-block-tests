@@ -1,0 +1,19 @@
+PODS:
+  - OCMock (3.1.5)
+
+DEPENDENCIES:
+  - OCMock (from `https://github.com/SteveFortune/ocmock.git`)
+
+EXTERNAL SOURCES:
+  OCMock:
+    :git: https://github.com/SteveFortune/ocmock.git
+
+CHECKOUT OPTIONS:
+  OCMock:
+    :commit: a693e3b2c900218225e4e5c283df7ad551f3c444
+    :git: https://github.com/SteveFortune/ocmock.git
+
+SPEC CHECKSUMS:
+  OCMock: 4c2925291f80407c3738dd1db14d21d0cc278864
+
+COCOAPODS: 0.38.2

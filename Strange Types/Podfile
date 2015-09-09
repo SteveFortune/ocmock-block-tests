@@ -1,0 +1,11 @@
+# Uncomment this line to define a global platform for your project
+# platform :ios, '6.0'
+
+target 'Strange Types' do
+
+end
+
+target 'Strange TypesTests' do
+  pod 'OCMock', :git => 'https://github.com/SteveFortune/ocmock.git'
+end
+
