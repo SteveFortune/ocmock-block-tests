@@ -21,9 +21,9 @@
   - Note that it requires additional parentheses when used in an `OCMStub` macro to avoid the vargs being parsed as separate macro arguments.
   - E.g. `OCMStub([obj doSomethingComplexCompletionBlock:([OCMArg invokeBlockWithArgs:@"A first param", @123, OCMOCK_VALUE(somePtr), OCMDefault, nil])])`
 
-### Test Cases
+### Use Cases
 
 - [`UIViewController` transition methods](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIViewController_Class/#//apple_ref/occ/instm/UIViewController/transitionFromViewController:toViewController:duration:options:animations:completion:)
 - [`UIView` animation methods](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIView_Class/)
-- [`RestKit`](https://github.com/RestKit/RestKit/blob/c567522fc6a8cb70770228fa35410e138a75f7e1/Code/Network/RKObjectManager.h#L690-L694)
+- [Third party dependencies, e.g. `RestKit`](https://github.com/RestKit/RestKit/blob/c567522fc6a8cb70770228fa35410e138a75f7e1/Code/Network/RKObjectManager.h#L690-L694)
 - [`NSArray` enumeration methods](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSArray_Class/#//apple_ref/occ/instm/NSArray/enumerateObjectsUsingBlock:)
