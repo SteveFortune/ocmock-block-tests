@@ -1,0 +1,45 @@
+PODS:
+  - AFNetworking (2.4.1):
+    - AFNetworking/NSURLConnection (= 2.4.1)
+    - AFNetworking/NSURLSession (= 2.4.1)
+    - AFNetworking/Reachability (= 2.4.1)
+    - AFNetworking/Security (= 2.4.1)
+    - AFNetworking/Serialization (= 2.4.1)
+    - AFNetworking/UIKit (= 2.4.1)
+  - AFNetworking/NSURLConnection (2.4.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.4.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.4.1)
+  - AFNetworking/Security (2.4.1)
+  - AFNetworking/Serialization (2.4.1)
+  - AFNetworking/UIKit (2.4.1):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - BetweenKit (2.0.1)
+  - OCMock (3.1.5)
+
+DEPENDENCIES:
+  - AFNetworking
+  - BetweenKit (~> 2.0.0)
+  - OCMock (from `https://github.com/SteveFortune/ocmock.git`)
+
+EXTERNAL SOURCES:
+  OCMock:
+    :git: https://github.com/SteveFortune/ocmock.git
+
+CHECKOUT OPTIONS:
+  OCMock:
+    :commit: a693e3b2c900218225e4e5c283df7ad551f3c444
+    :git: https://github.com/SteveFortune/ocmock.git
+
+SPEC CHECKSUMS:
+  AFNetworking: 41d45d2c14219af0fa5addf3cfd433a002c13c9f
+  BetweenKit: 89edc0c6dd96eb33ea02c097bb99a9b1c14880f0
+  OCMock: 4c2925291f80407c3738dd1db14d21d0cc278864
+
+COCOAPODS: 0.38.2
