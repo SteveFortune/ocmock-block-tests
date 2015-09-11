@@ -33,7 +33,7 @@
 
 - This repo contains 2 test harnesses:
 
-    - `Strange Types`, which tests these features out with all sorts of strange block signatures
+    - `Strange Types`, which tests these features out with all sorts of strange block signatures,
     - A sample application taken from [BetweenKit](https://github.com/ice3-software/between-kit), which aims to demonstrate how this feature might be used in the real world.
 
 - All tests pass on the following:
@@ -47,3 +47,9 @@
 - This relies on `NSInvokation` to invoke the blocks and as a result, does not support `va_list`s or `unions` as arguments.
 - This has not been tested with function pointers as block arguments.
 - `OCMBlockArgCaller` is quite strict: it will throw if the type signature of a given argument doesn't match the type signature of the block (to offer as much protection as possible against weird bugs).
+
+### References
+
+- [This article](https://mikeash.com/pyblog/friday-qa-2011-05-06-a-tour-of-mablockclosure.html)
+- [CTObjectiveCRuntimeAdditions](https://github.com/ebf/CTObjectiveCRuntimeAdditions#getting-runtime-information-about-blocks)
+- [BlocksKit/DynamicDelegate](https://github.com/zwaldowski/BlocksKit/tree/master/BlocksKit/DynamicDelegate)
