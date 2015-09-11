@@ -27,3 +27,23 @@
 - [`UIView` animation methods](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIView_Class/)
 - [Third party dependencies, e.g. `RestKit`](https://github.com/RestKit/RestKit/blob/c567522fc6a8cb70770228fa35410e138a75f7e1/Code/Network/RKObjectManager.h#L690-L694)
 - [`NSArray` enumeration methods](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSArray_Class/#//apple_ref/occ/instm/NSArray/enumerateObjectsUsingBlock:)
+
+
+### Tests
+
+- This repo contains 2 test harnesses:
+
+    - `Strange Types`, which tests these features out with all sorts of strange block signatures
+    - A sample application taken from [BetweenKit](https://github.com/ice3-software/between-kit), which aims to demonstrate how this feature might be used in the real world.
+
+- All tests pass on the following:
+
+    - iPhone 6, iOS 8.3
+    - iPad Mini, iOS 8.1
+    - __TODO__
+
+### Limitations
+
+- This relies on `NSInvokation` to invoke the blocks and so does not support variadic arguments or unions as block arguments.
+- This has not been tested with function pointers as block arguments.
+- `OCMBlockArgCaller` is quite strict: it will throw if the type signature of a given argument doesn't match the type signature of the block's argument to offer as much safeguarding as possible against weird bugs.
