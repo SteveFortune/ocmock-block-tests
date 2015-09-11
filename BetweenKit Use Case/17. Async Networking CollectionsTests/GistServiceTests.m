@@ -48,7 +48,7 @@
     OCMVerify([_mockRequestManager GET:@"https://api.github.com/gists/public" parameters:nil success:[OCMArg isNotNil] failure:[OCMArg isNotNil]]);
 }
 
-- (void)testFindGistsFiresCompleteBlockWithResultsOnSuccess {
+- (void)testFindGistsFiresCompleteBlockWithResultsOnSuccessfulRequest {
     
     NSArray *gists = @[ @{ @"id": @"a", @"description": @"First test gist" }, @{ @"id": @"b", @"description": @"Second test gist" }, @{ @"id": @"c" }, ];
     [[_mockRequestManager stub] GET:[OCMArg any] parameters:[OCMArg any] success:[OCMArg invokeBlockWithArgs:OCMDefault, gists, nil] failure:[OCMArg any]];
@@ -70,17 +70,49 @@
 
 }
 
-- (void)testFindGistsFiresFailBlock {
+- (void)testFindGistsFiresFailBlockOnFailedRequest {
     
     [[_mockRequestManager stub] GET:[OCMArg any] parameters:[OCMArg any] success:[OCMArg any] failure:[OCMArg invokeBlock]];
-
     __block BOOL invoked;
-    [_service findGistsWithCompleteBlock:nil withFailBlock:^{
-        invoked = YES;
-    }];
-
+    [_service findGistsWithCompleteBlock:nil withFailBlock:^{ invoked = YES; }];
     XCTAssertTrue(invoked, @"Our failure handler doesn't invoke the success block");
 
+}
+
+- (void)testFindGistMakesGETRequest {
+    [_service findGistByGithubId:@"123" withCompleteBlock:[OCMArg any] withFailBlock:[OCMArg any]];
+    OCMVerify([_mockRequestManager GET:@"https://api.github.com/gists/123" parameters:nil success:[OCMArg isNotNil] failure:[OCMArg isNotNil]]);    
+}
+
+- (void)testFindGistFirstCompleteBlockWithGistOnSuccessfulRequest {
+
+    NSDictionary *gist = @{ @"description": @"Hi, I am a gist.", @"owner": @{ @"url": @"http://here.com" }, @"comments": @100, @"created_at": @"2015-09-11T17:35:39Z" };
+    [[_mockRequestManager stub] GET:[OCMArg any] parameters:[OCMArg any] success:[OCMArg invokeBlockWithArgs:OCMDefault, gist, nil] failure:[OCMArg any]];
+    
+    __block Gist *result;
+    __block BOOL invoked;
+    
+    [_service findGistByGithubId:@"123" withCompleteBlock:^(Gist *gist) {
+        invoked = YES;
+        result = gist;
+    } withFailBlock:nil];
+    
+    XCTAssertTrue(invoked, @"Our success handler doesn't invoke the success block");
+    XCTAssertNotNil(result, @"Gist is nil");
+    XCTAssertEqualObjects(result.gistDescription, @"Hi, I am a gist.", @"Gist descriptions don't match");
+    XCTAssertEqualObjects(result.ownerUrl, @"http://here.com", @"Owner urls don't match");
+    XCTAssertEqualObjects(result.commentsCount, @100, @"Comment counts don't match");
+    XCTAssertEqualObjects(result.createdAt, [NSDate dateWithTimeIntervalSince1970:1441992939], @"Dates don't match");
+
+}
+
+- (void)testFindGistFiresFailBlockOnFailedRequest {
+    
+    [[_mockRequestManager stub] GET:[OCMArg any] parameters:[OCMArg any] success:[OCMArg any] failure:[OCMArg invokeBlock]];
+    __block BOOL invoked;
+    [_service findGistByGithubId:@"123" withCompleteBlock:nil withFailBlock:^{ invoked = YES; }];
+    XCTAssertTrue(invoked, @"Our failure handler doesn't invoke the success block");
+    
 }
 
 @end
