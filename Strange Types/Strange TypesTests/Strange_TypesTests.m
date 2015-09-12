@@ -24,7 +24,7 @@ typedef BOOL (^OCMBlockTypedef)(NSString *);
 
 @implementation OCMStrangeTypes
 
-- (void)doLotsOfParams:(void (^)(NSString *, NSString *, long, NSInteger, double, NSNumber *, NSIndexPath *))longBlock {}
+- (void)doLotsOfParams:(void (^)(NSString *, NSString *, long, NSInteger, double, char, NSNumber *, NSIndexPath *))longBlock {}
 - (void)doReturnValue:(NSString *(^)())returnBlock {}
 - (void)doInnerBlock:(void(^)(BOOL(^)(NSString *), OCMBlockTypedef))blockWithBlock {}
 - (void)doTypedef:(void(^)(OCMTypedefObj, OCMTypedefObj *))typedefBlock {}
@@ -52,10 +52,12 @@ typedef BOOL (^OCMBlockTypedef)(NSString *);
 
 - (void)testInvokingBlockWithManyVaryingParams {
 
-    OCMStub([mock doLotsOfParams:([OCMArg invokeBlockWithArgs:@"One", @"Two", @3l, @4l, @5.23, @6, [NSIndexPath indexPathWithIndex:7], nil])]);
+    NSNumber *num = @3L;
+    NSLog(@"Num type: %s", num.objCType);
+    OCMStub([mock doLotsOfParams:([OCMArg invokeBlockWithArgs:@"One", @"Two", @3, @4, @5.23, @'6', @7, [NSIndexPath indexPathWithIndex:8], nil])]);
     __block BOOL invoked = NO;
 
-    [mock doLotsOfParams:^(NSString *one, NSString *two, long three, NSInteger four, double five, NSNumber *six, NSIndexPath *seven) {
+    [mock doLotsOfParams:^(NSString *one, NSString *two, long three, NSInteger four, double five, char six, NSNumber *seven, NSIndexPath *eight) {
         
         invoked = YES;
         
@@ -64,8 +66,9 @@ typedef BOOL (^OCMBlockTypedef)(NSString *);
         XCTAssertEqual(three, 3);
         XCTAssertEqual(four, 4);
         XCTAssertEqual(five, 5.23);
-        XCTAssertEqualObjects(six, @6);
-        XCTAssertEqualObjects(seven, [NSIndexPath indexPathWithIndex:7]);
+        XCTAssertEqual(six, '6');
+        XCTAssertEqualObjects(seven, @7);
+        XCTAssertEqualObjects(eight, [NSIndexPath indexPathWithIndex:8]);
         
     }];
     

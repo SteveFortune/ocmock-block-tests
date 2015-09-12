@@ -10,7 +10,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   OCMock:
-    :commit: a693e3b2c900218225e4e5c283df7ad551f3c444
+    :commit: ad3d92d89b25e766f2030861f23f12195bdbf24c
     :git: https://github.com/SteveFortune/ocmock.git
 
 SPEC CHECKSUMS:

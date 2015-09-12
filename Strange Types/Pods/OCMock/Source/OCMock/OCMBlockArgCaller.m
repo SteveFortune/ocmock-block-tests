@@ -65,15 +65,17 @@
             continue;
         }
         char const *typeEncoding = [sig getArgumentTypeAtIndex:j];
-        /// @note OCMIsObjectType returns false for some reason, reverted to
-        /// comparing first char to '@'.
         if (typeEncoding[0] == '@') {
             [_inv setArgument:&param atIndex:j];
         } else {
+            NSAssert([param isKindOfClass:[NSValue class]], @"Param at %lu should be boxed in NSValue", (long unsigned)i);
             char const *valEncoding = [param objCType];
+            /// @note Here we allow any data pointer to be passed as a void pointer and
+            /// any numberical types to be passed as arguments to the block.
             BOOL takesVoidPtr = !strcmp(typeEncoding, "^v") && valEncoding[0] == '^';
+            BOOL takesNumber = OCMNumberTypeForObjCType(typeEncoding) && OCMNumberTypeForObjCType(valEncoding);
             NSAssert(
-                takesVoidPtr || OCMEqualTypesAllowingOpaqueStructs(typeEncoding, valEncoding),
+                takesVoidPtr || OCMEqualTypesAllowingOpaqueStructs(typeEncoding, valEncoding) || takesNumber,
                 @"Param type mismatch! You gave %s, block requires %s",
                 valEncoding, typeEncoding
             );

@@ -36,7 +36,7 @@
     - `Strange Types`, which tests these features out with all sorts of strange block signatures,
     - A sample application taken from [BetweenKit](https://github.com/ice3-software/between-kit), which aims to demonstrate how this feature might be used in the real world.
 
-- All tests pass on the following:
+- All tests have passed on the following:
 
     - iPhone 6, iOS 8.3
     - iPad Mini, iOS 8.1
@@ -44,7 +44,7 @@
 
 ### Limitations
 
-- This relies on `NSInvokation` to invoke the blocks and as a result, does not support `va_list`s or `unions` as arguments.
+- This relies on `NSInvocation` to invoke the blocks and as a result, does not support `va_list`s or `unions` as arguments.
 - This has not been tested with function pointers as block arguments.
 - `OCMBlockArgCaller` is quite strict: it will throw if the type signature of a given argument doesn't match the type signature of the block (to offer as much protection as possible against weird bugs).
 
