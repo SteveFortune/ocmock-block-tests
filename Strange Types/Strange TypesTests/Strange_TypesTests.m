@@ -52,8 +52,6 @@ typedef BOOL (^OCMBlockTypedef)(NSString *);
 
 - (void)testInvokingBlockWithManyVaryingParams {
 
-    NSNumber *num = @3L;
-    NSLog(@"Num type: %s", num.objCType);
     OCMStub([mock doLotsOfParams:([OCMArg invokeBlockWithArgs:@"One", @"Two", @3, @4, @5.23, @'6', @7, [NSIndexPath indexPathWithIndex:8], nil])]);
     __block BOOL invoked = NO;
 

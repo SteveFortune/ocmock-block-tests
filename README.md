@@ -33,20 +33,26 @@
 
 - This repo contains 2 test harnesses:
 
-    - `Strange Types`, which tests these features out with all sorts of strange block signatures,
+    - `Strange Types`, which tests these features out with all sorts of obscure block signatures,
     - A sample application taken from [BetweenKit](https://github.com/ice3-software/between-kit), which aims to demonstrate how this feature might be used in the real world.
 
 - All tests have passed on the following:
 
     - iPhone 6, iOS 8.3
     - iPad Mini, iOS 8.1
-    - __TODO__
+    - iPad 2, iOS 8.3
+    - iPad 2 Simulator, iOS 7.1, iOS 8.1, iOS 8.4
+    - iPad Retina Simulator, iOS 7.1, iOS 8.1, iOS 8.4
+
+- [Tests in my OCMock fork](https://github.com/SteveFortune/ocmock/blob/master/Source/OCMockTests/OCMockObjectTests.m#L648-L729) have passed on the following:
+
+  - Macbook Pro, Retina 15", OS X Yosemite 10.10.4
 
 ### Limitations
 
 - This relies on `NSInvocation` to invoke the blocks and as a result, does not support `va_list`s or `unions` as arguments.
 - This has not been tested with function pointers as block arguments.
-- `OCMBlockArgCaller` is quite strict: it will throw if the type signature of a given argument doesn't match the type signature of the block (to offer as much protection as possible against weird bugs).
+- `OCMBlockArgCaller` is quite strict: it will throw if the type signature of a given argument doesn't match the type signature of the block (to offer as much feedback as possible to the user).
 
 ### References
 
