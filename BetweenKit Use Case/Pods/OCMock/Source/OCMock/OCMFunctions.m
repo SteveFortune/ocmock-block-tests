@@ -15,7 +15,7 @@
  */
 
 #import <objc/runtime.h>
-#import "OCMFunctions.h"
+#import "OCMFunctionsPrivate.h"
 #import "OCMLocation.h"
 #import "OCClassMockObject.h"
 #import "OCPartialMockObject.h"
@@ -152,6 +152,9 @@ static BOOL OCMEqualTypesAllowingOpaqueStructsInternal(const char *type1, const 
             if (type2[0] != type1[0])
                 return NO;
             return OCMEqualTypesAllowingOpaqueStructs(type1 + 1, type2 + 1);
+
+        case '?':
+            return type2[0] == '?';
 
         case '\0':
             return type2[0] == '\0';

@@ -32,6 +32,7 @@
     "Source/OCMock/OCMMacroState.h",
     "Source/OCMock/OCMRecorder.h",
     "Source/OCMock/OCMStubRecorder.h",
-    "Source/OCMock/NSNotificationCenter+OCMAdditions.h"
+    "Source/OCMock/NSNotificationCenter+OCMAdditions.h",
+    "Source/OCMock/OCMFunctions.h"
   ]
 }
